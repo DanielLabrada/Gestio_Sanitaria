@@ -1,0 +1,182 @@
+[
+    {
+        "id": 1,
+        "nombre_completo": "Carlos Gómez Fernández",
+        "nombre_usuario": "cgomez",
+        "contrasena": "4821"
+    },
+    {
+        "id": 2,
+        "nombre_completo": "María Rodriguez López",
+        "nombre_usuario": "mrodriguez",
+        "contrasena": "9153"
+    },
+    {
+        "id": 3,
+        "nombre_completo": "Alejandro Martínez Silva",
+        "nombre_usuario": "amartinez",
+        "contrasena": "1047"
+    },
+    {
+        "id": 4,
+        "nombre_completo": "Lucía García Perez",
+        "nombre_usuario": "lgarcia",
+        "contrasena": "6392"
+    },
+    {
+        "id": 5,
+        "nombre_completo": "Javier Hernández Ruiz",
+        "nombre_usuario": "jhernandez",
+        "contrasena": "2784"
+    },
+    {
+        "id": 6,
+        "nombre_completo": "Sofia López Morales",
+        "nombre_usuario": "slopez",
+        "contrasena": "8519"
+    },
+    {
+        "id": 7,
+        "nombre_completo": "Diego González Castro",
+        "nombre_usuario": "dgonzalez",
+        "contrasena": "3406"
+    },
+    {
+        "id": 8,
+        "nombre_completo": "Elena Perez Navarro",
+        "nombre_usuario": "eperez",
+        "contrasena": "7261"
+    },
+    {
+        "id": 9,
+        "nombre_completo": "Mateo Sánchez Torres",
+        "nombre_usuario": "msanchez",
+        "contrasena": "5938"
+    },
+    {
+        "id": 10,
+        "nombre_completo": "Valeria Ramírez Flores",
+        "nombre_usuario": "vramirez",
+        "contrasena": "1642"
+    },
+    {
+        "id": 11,
+        "nombre_completo": "Daniel Cruz Vargas",
+        "nombre_usuario": "dcruz",
+        "contrasena": "8073"
+    },
+    {
+        "id": 12,
+        "nombre_completo": "Paula Flores Mendoza",
+        "nombre_usuario": "pflores",
+        "contrasena": "4295"
+    },
+    {
+        "id": 13,
+        "nombre_completo": "Gabriel Morales Ortiz",
+        "nombre_usuario": "gmorales",
+        "contrasena": "6814"
+    },
+    {
+        "id": 14,
+        "nombre_completo": "Camila Ruiz Gutierrez",
+        "nombre_usuario": "cruiz",
+        "contrasena": "2350"
+    },
+    {
+        "id": 15,
+        "nombre_completo": "Nicolás Reyes Romero",
+        "nombre_usuario": "nreyes",
+        "contrasena": "7489"
+    },
+    {
+        "id": 16,
+        "nombre_completo": "Isabella Diaz Alvarez",
+        "nombre_usuario": "idiaz",
+        "contrasena": "3126"
+    },
+    {
+        "id": 17,
+        "nombre_completo": "Samuel Mendoza Castillo",
+        "nombre_usuario": "smendoza",
+        "contrasena": "9501"
+    },
+    {
+        "id": 18,
+        "nombre_completo": "Victoria Castillo Moreno",
+        "nombre_usuario": "vcastillo",
+        "contrasena": "5637"
+    },
+    {
+        "id": 19,
+        "nombre_completo": "Joaquín Ortiz Jimenez",
+        "nombre_usuario": "jortiz",
+        "contrasena": "1874"
+    },
+    {
+        "id": 20,
+        "nombre_completo": "Martina Moreno Molina",
+        "nombre_usuario": "mmoreno",
+        "contrasena": "6240"
+    },
+    {
+        "id": 21,
+        "nombre_completo": "Lucas Gutierrez Delgado",
+        "nombre_usuario": "lgutierrez",
+        "contrasena": "8391"
+    },
+    {
+        "id": 22,
+        "nombre_completo": "Sara Romero Aguilar",
+        "nombre_usuario": "sromero",
+        "contrasena": "2058"
+    },
+    {
+        "id": 23,
+        "nombre_completo": "Adrian Vargas Medina",
+        "nombre_usuario": "avargas",
+        "contrasena": "7913"
+    },
+    {
+        "id": 24,
+        "nombre_completo": "Daniela Navarro Vega",
+        "nombre_usuario": "dnavarro",
+        "contrasena": "4367"
+    },
+    {
+        "id": 25,
+        "nombre_completo": "Sebastian Castro Suarez",
+        "nombre_usuario": "scastro",
+        "contrasena": "9024"
+    },
+    {
+        "id": 26,
+        "nombre_completo": "Emma Silva Rios",
+        "nombre_usuario": "esilva",
+        "contrasena": "1485"
+    },
+    {
+        "id": 27,
+        "nombre_completo": "Tomas Alvarez Ramos",
+        "nombre_usuario": "talvarez",
+        "contrasena": "5732"
+    },
+    {
+        "id": 28,
+        "nombre_completo": "Renata Molina Gil",
+        "nombre_usuario": "rmolina",
+        "contrasena": "8619"
+    },
+    {
+        "id": 29,
+        "nombre_completo": "Matias Delgado Serrano",
+        "nombre_usuario": "mdelgado",
+        "contrasena": "3245"
+    },
+    {
+        "id": 30,
+        "nombre_completo": "Alondra Gil Blanco",
+        "nombre_usuario": "agil",
+        "contrasena": "6908"
+    }
+]
