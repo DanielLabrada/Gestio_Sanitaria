@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.Gestio_Sanitaria.model.Nurse;
 
 import tools.jackson.databind.ObjectMapper;
-
+import org.springframework.web.bind.annotation.GetMapping;
 @RestController
 @RequestMapping("/nurse")
 public class NurseController {
@@ -39,4 +39,11 @@ public class NurseController {
 		}
 		return false;
 	}
+	
+	@GetMapping("/all")
+	public List<Nurse> getAllNurses() {
+		return nurses;
+	}
+	
+	
 }
