@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.example.Gestio_Sanitaria.model.Nurse;
 
@@ -38,6 +40,17 @@ public class NurseController {
 			}
 		}
 		return false;
+	}
+	
+	@GetMapping("/name/{name}")
+	public Nurse findByName(@PathVariable String name) {
+		for (Nurse n : nurses) {
+			// Busca coincidencia exacta ignorando mayúsculas/minúsculas
+			if (n.getNombreCompleto().equalsIgnoreCase(name)) {
+				return n;
+			}
+		}
+		return null; // Si no lo encuentra, no devuelve nada
 	}
 	
 	@GetMapping("/all")
