@@ -53,8 +53,8 @@ public class NurseController {
 		return null; // Si no lo encuentra, no devuelve nada
 	}
 	
-	@GetMapping("/all")
-	public List<Nurse> getAllNurses() {
+	@GetMapping("/index")
+	public List<Nurse> getAll() {
 		return nurses;
 	}
 	
