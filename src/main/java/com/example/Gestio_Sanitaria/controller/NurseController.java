@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.example.Gestio_Sanitaria.model.Nurse;
+import com.example.Gestio_Sanitaria.repository.NurseRepository;
 
 import tools.jackson.databind.ObjectMapper;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +23,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RequestMapping("/nurse")
 public class NurseController {
 
+	@Autowired
+	private NurseRepository nurseRepository;
 	private List<Nurse> nurses;
 
 	
@@ -31,26 +35,22 @@ public class NurseController {
 	}
 
 	
+	
 	@PostMapping("/login")
 	public boolean login(@RequestBody Nurse datos) {
-		for (Nurse n : nurses) {
-			if (n.getNombreUsuario().equals(datos.getNombreUsuario())
-					&& n.getContrasena().equals(datos.getContrasena())) {
-				return true;
-			}
-		}
-		return false;
+		return nurseRepository.existsByNombreUsuarioAndContrasena(
+				datos.getNombreUsuario(), datos.getContrasena());
 	}
 	
 	@GetMapping("/name/{name}")
 	public Nurse findByName(@PathVariable String name) {
 		for (Nurse n : nurses) {
-			// Busca coincidencia exacta ignorando mayúsculas/minúsculas
+			
 			if (n.getNombreCompleto().equalsIgnoreCase(name)) {
 				return n;
 			}
 		}
-		return null; // Si no lo encuentra, no devuelve nada
+		return null; 
 	}
 	
 	@GetMapping("/index")
