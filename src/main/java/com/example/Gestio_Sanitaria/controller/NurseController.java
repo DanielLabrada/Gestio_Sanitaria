@@ -49,8 +49,10 @@ public class NurseController {
 	
 	@GetMapping("/index")
 	public List<Nurse> getAll() {
-		return nurses;
+		return nurseRepository.findAll();
 	}
+	
+	
 	
 	
 }
