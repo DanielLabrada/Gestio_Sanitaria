@@ -44,13 +44,7 @@ public class NurseController {
 	
 	@GetMapping("/name/{name}")
 	public Nurse findByName(@PathVariable String name) {
-		for (Nurse n : nurses) {
-			
-			if (n.getNombreCompleto().equalsIgnoreCase(name)) {
-				return n;
-			}
-		}
-		return null; 
+		return nurseRepository.findByNombreCompletoIgnoreCase(name);
 	}
 	
 	@GetMapping("/index")
