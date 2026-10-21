@@ -6,6 +6,7 @@ import com.example.Gestio_Sanitaria.model.Nurse;
 
 public interface NurseRepository extends JpaRepository<Nurse, Integer> {
 
-	
 	boolean existsByNombreUsuarioAndContrasena(String nombreUsuario, String contrasena);
+
+	Nurse findByNombreCompletoIgnoreCase(String nombreCompleto);
 }
