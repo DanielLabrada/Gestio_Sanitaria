@@ -25,6 +25,7 @@ public class Nurse {
 	@Column(name = "nombre_usuario", nullable = false, unique = true, length = 50)
 	private String nombreUsuario;
 
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	@Column(name = "contrasena", nullable = false, length = 255)
 	private String contrasena;
 
