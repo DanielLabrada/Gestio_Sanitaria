@@ -6,7 +6,8 @@ import com.example.Gestio_Sanitaria.model.Nurse;
 
 public interface NurseRepository extends JpaRepository<Nurse, Integer> {
 
-	boolean existsByNombreUsuarioAndContrasena(String nombreUsuario, String contrasena);
+	// Spring builds the queries from the method names
+	boolean existsByUsernameAndPassword(String username, String password);
 
-	Nurse findByNombreCompletoIgnoreCase(String nombreCompleto);
+	Nurse findByFullNameIgnoreCase(String fullName);
 }

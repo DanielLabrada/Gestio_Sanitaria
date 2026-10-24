@@ -21,15 +21,15 @@ public class DataLoader implements CommandLineRunner {
 	@Autowired
 	private ObjectMapper mapper;
 
-	
+	// On startup: if the table is empty, fill it with the data from the JSON file
 	@Override
 	public void run(String... args) throws Exception {
 		if (nurseRepository.count() == 0) {
-			InputStream fichero = new ClassPathResource("nursesData.json").getInputStream();
-			Nurse[] array = mapper.readValue(fichero, Nurse[].class);
-			for (Nurse n : array) {
-				n.setId(null); 
-				nurseRepository.save(n);
+			InputStream file = new ClassPathResource("nursesData.json").getInputStream();
+			Nurse[] nurseArray = mapper.readValue(file, Nurse[].class);
+			for (Nurse nurse : nurseArray) {
+				nurse.setId(null); // the database generates the id
+				nurseRepository.save(nurse);
 			}
 		}
 	}
