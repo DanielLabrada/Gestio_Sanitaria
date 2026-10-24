@@ -17,17 +17,17 @@ public class Nurse {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@JsonProperty("nombre_completo")
+	// Database column names are kept as they were
 	@Column(name = "nombre_completo", nullable = false, length = 150)
-	private String nombreCompleto;
+	private String fullName;
 
-	@JsonProperty("nombre_usuario")
 	@Column(name = "nombre_usuario", nullable = false, unique = true, length = 50)
-	private String nombreUsuario;
+	private String username;
 
+	// The password can be received (login) but is never sent back in responses
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	@Column(name = "contrasena", nullable = false, length = 255)
-	private String contrasena;
+	private String password;
 
 	public Nurse() {
 	}
@@ -40,27 +40,27 @@ public class Nurse {
 		this.id = id;
 	}
 
-	public String getNombreCompleto() {
-		return nombreCompleto;
+	public String getFullName() {
+		return fullName;
 	}
 
-	public void setNombreCompleto(String nombreCompleto) {
-		this.nombreCompleto = nombreCompleto;
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
 
-	public String getNombreUsuario() {
-		return nombreUsuario;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setNombreUsuario(String nombreUsuario) {
-		this.nombreUsuario = nombreUsuario;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public String getContrasena() {
-		return contrasena;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setContrasena(String contrasena) {
-		this.contrasena = contrasena;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 }
