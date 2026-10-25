@@ -7,12 +7,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
 
 import com.example.Gestio_Sanitaria.model.Nurse;
 import com.example.Gestio_Sanitaria.repository.NurseRepository;
@@ -35,20 +37,22 @@ public class NurseController {
 
 	// Returns true if a nurse with that username and password exists in the database
 	@PostMapping("/login")
-	public boolean login(@RequestBody Nurse credentials) {
-		return nurseRepository.existsByUsernameAndPassword(
+	public ResponseEntity<Boolean> login(@RequestBody Nurse credentials) {
+		boolean authenticated = nurseRepository.existsByUsernameAndPassword(
 				credentials.getUsername(), credentials.getPassword());
+		return ResponseEntity.ok(authenticated);
 	}
 
-	// Finds a nurse by full name, ignoring upper/lower case
 	@GetMapping("/name/{name}")
-	public Nurse findByName(@PathVariable String name) {
-		return nurseRepository.findByFullNameIgnoreCase(name);
+	public ResponseEntity<Nurse> findByName(@PathVariable String name) {
+		Nurse nurse = nurseRepository.findByFullNameIgnoreCase(name);
+		return nurse == null
+				? ResponseEntity.notFound().build()
+				: ResponseEntity.ok(nurse);
 	}
 
-	// Returns all the nurses stored in the database
 	@GetMapping("/index")
-	public List<Nurse> getAll() {
-		return nurseRepository.findAll();
+	public ResponseEntity<List<Nurse>> getAll() {
+		return ResponseEntity.ok(nurseRepository.findAll());
 	}
 }
