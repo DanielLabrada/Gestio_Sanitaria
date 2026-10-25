@@ -18,15 +18,15 @@ public class Nurse {
 	private Integer id;
 
 	// Database column names are kept as they were
-	@Column(name = "nombre_completo", nullable = false, length = 150)
+	@Column(name = "full_name", nullable = false, length = 150)
 	private String fullName;
 
-	@Column(name = "nombre_usuario", nullable = false, unique = true, length = 50)
+	@Column(name = "username", nullable = false, unique = true, length = 50)
 	private String username;
 
 	// The password can be received (login) but is never sent back in responses
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-	@Column(name = "contrasena", nullable = false, length = 255)
+	@Column(name = "password", nullable = false, length = 255)
 	private String password;
 
 	public Nurse() {
