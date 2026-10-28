@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.http.ResponseEntity;
 
 import com.example.Gestio_Sanitaria.model.Nurse;
 import com.example.Gestio_Sanitaria.repository.NurseRepository;
@@ -55,4 +54,13 @@ public class NurseController {
 	public ResponseEntity<List<Nurse>> getAll() {
 		return ResponseEntity.ok(nurseRepository.findAll());
 	}
+
+	
+	@GetMapping("/id/{id}")
+	public ResponseEntity<Nurse> getNurseById(@PathVariable Integer id) {
+		return nurseRepository.findById(id)
+				.map(ResponseEntity::ok)
+				.orElseGet(() -> ResponseEntity.notFound().build());
+	}
+
 }
