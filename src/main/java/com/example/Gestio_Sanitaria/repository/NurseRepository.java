@@ -9,5 +9,7 @@ public interface NurseRepository extends JpaRepository<Nurse, Integer> {
 	// Spring builds the queries from the method names
 	boolean existsByUsernameAndPassword(String username, String password);
 
+	boolean existsByUsernameIgnoreCase(String username);
+
 	Nurse findByFullNameIgnoreCase(String fullName);
 }

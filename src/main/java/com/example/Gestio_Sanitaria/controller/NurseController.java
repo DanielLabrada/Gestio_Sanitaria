@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -40,6 +41,20 @@ public class NurseController {
 		boolean authenticated = nurseRepository.existsByUsernameAndPassword(
 				credentials.getUsername(), credentials.getPassword());
 		return ResponseEntity.ok(authenticated);
+	}
+
+	@PostMapping({"/create", "/new", "/save", "/add"})
+	public ResponseEntity<Nurse> create(@RequestBody Nurse nurse) {
+		if (nurse == null || nurse.getFullName() == null || nurse.getUsername() == null || nurse.getPassword() == null) {
+			return ResponseEntity.badRequest().build();
+		}
+
+		if (nurseRepository.existsByUsernameIgnoreCase(nurse.getUsername())) {
+			return ResponseEntity.badRequest().build();
+		}
+
+		Nurse savedNurse = nurseRepository.save(nurse);
+		return ResponseEntity.status(HttpStatus.CREATED).body(savedNurse);
 	}
 
 	@GetMapping("/name/{name}")
