@@ -1,12 +1,8 @@
 package com.example.Gestio_Sanitaria.controller;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,28 +15,27 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.Gestio_Sanitaria.model.Nurse;
 import com.example.Gestio_Sanitaria.repository.NurseRepository;
 
-import tools.jackson.databind.ObjectMapper;
-
 @RestController
 @RequestMapping("/nurse")
 public class NurseController {
 
 	@Autowired
 	private NurseRepository nurseRepository;
-	private List<Nurse> nurses;
 
-	public NurseController(ObjectMapper mapper) throws IOException {
-		InputStream file = new ClassPathResource("nursesData.json").getInputStream();
-		Nurse[] nurseArray = mapper.readValue(file, Nurse[].class);
-		nurses = Arrays.asList(nurseArray);
-	}
-
-	// Returns true if a nurse with that username and password exists in the database
+	// Login: 200 OK if the credentials are correct, 401 if not, 400 if data is missing
 	@PostMapping("/login")
 	public ResponseEntity<Boolean> login(@RequestBody Nurse credentials) {
+		if (credentials.getUsername() == null || credentials.getPassword() == null) {
+			return ResponseEntity.badRequest().build();
+		}
+
 		boolean authenticated = nurseRepository.existsByUsernameAndPassword(
 				credentials.getUsername(), credentials.getPassword());
-		return ResponseEntity.ok(authenticated);
+
+		if (!authenticated) {
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(false);
+		}
+		return ResponseEntity.ok(true);
 	}
 
 	@PostMapping({"/create", "/new", "/save", "/add"})
@@ -70,7 +65,6 @@ public class NurseController {
 		return ResponseEntity.ok(nurseRepository.findAll());
 	}
 
-	
 	@GetMapping("/id/{id}")
 	public ResponseEntity<Nurse> getNurseById(@PathVariable Integer id) {
 		return nurseRepository.findById(id)
