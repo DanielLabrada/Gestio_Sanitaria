@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.DeleteMapping;
 
 import com.example.Gestio_Sanitaria.model.Nurse;
 import com.example.Gestio_Sanitaria.repository.NurseRepository;
@@ -70,6 +71,16 @@ public class NurseController {
 		return nurseRepository.findById(id)
 				.map(ResponseEntity::ok)
 				.orElseGet(() -> ResponseEntity.notFound().build());
+	}
+	
+	
+	@DeleteMapping("/id/{id}")
+	public ResponseEntity<Void> deleteNurse(@PathVariable Integer id) {
+		if (!nurseRepository.existsById(id)) {
+			return ResponseEntity.notFound().build();
+		}
+		nurseRepository.deleteById(id);
+		return ResponseEntity.ok().build();
 	}
 
 }
