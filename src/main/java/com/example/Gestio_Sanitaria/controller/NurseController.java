@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import com.example.Gestio_Sanitaria.model.Nurse;
 import com.example.Gestio_Sanitaria.repository.NurseRepository;
@@ -73,6 +74,34 @@ public class NurseController {
 				.orElseGet(() -> ResponseEntity.notFound().build());
 	}
 	
+	@PutMapping("/id/{id}")
+	public ResponseEntity<Nurse> updateNurse(@PathVariable Integer id, @RequestBody Nurse nurseDetails) {
+		// Comprueba si el enfermero existe (devuelve 404 Not Found si no existe)
+		if (!nurseRepository.existsById(id)) {
+			return ResponseEntity.notFound().build();
+		}
+		
+		// Validación básica de datos obligatorios (devuelve 400 Bad Request si faltan datos)
+		if (nurseDetails == null || nurseDetails.getFullName() == null || nurseDetails.getFullName().trim().isEmpty() ||
+		    nurseDetails.getUsername() == null || nurseDetails.getUsername().trim().isEmpty()) {
+			return ResponseEntity.badRequest().build();
+		}
+		
+		// Recupera el registro existente de la base de datos
+		Nurse existingNurse = nurseRepository.findById(id).get();
+		
+		// Actualiza los campos
+		existingNurse.setFullName(nurseDetails.getFullName());
+		existingNurse.setUsername(nurseDetails.getUsername());
+		
+		if (nurseDetails.getPassword() != null && !nurseDetails.getPassword().trim().isEmpty()) {
+			existingNurse.setPassword(nurseDetails.getPassword());
+		}
+		
+		// Guarda los cambios y devuelve 200 OK con el objeto actualizado
+		Nurse updatedNurse = nurseRepository.save(existingNurse);
+		return ResponseEntity.ok(updatedNurse);
+	}
 	
 	@DeleteMapping("/id/{id}")
 	public ResponseEntity<Void> deleteNurse(@PathVariable Integer id) {
