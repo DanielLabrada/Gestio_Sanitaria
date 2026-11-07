@@ -77,9 +77,7 @@ public class NurseController {
 	@PutMapping("/id/{id}")
 	public ResponseEntity<Nurse> updateNurse(@PathVariable Integer id, @RequestBody Nurse nurseDetails) {
 		// Comprueba si el enfermero existe (devuelve 404 Not Found si no existe)
-		if (!nurseRepository.existsById(id)) {
-			return ResponseEntity.notFound().build();
-		}
+	
 		
 		// Validación básica de datos obligatorios (devuelve 400 Bad Request si faltan datos)
 		if (nurseDetails == null || nurseDetails.getFullName() == null || nurseDetails.getFullName().trim().isEmpty() ||
